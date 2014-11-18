@@ -1,0 +1,5 @@
+function s = perceptron(P, N)
+    matrix = randn(P, N);
+    labels = 
+    matrix = [matrix; labels];
+end
