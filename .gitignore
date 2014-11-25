@@ -33,6 +33,8 @@
 *.vrb
 *.xdy
 *.tdo
+*.pdf
+*.tex.backup
 
 ### Linux ###
 *~
