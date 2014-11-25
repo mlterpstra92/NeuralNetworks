@@ -1,11 +1,11 @@
-function [weights, taken] = learn( dataset, weights, numNeurons )
+function [weights, taken] = learn( dataset, weights, numNeurons)
 %LEARN Summary of this function goes here
 %   Detailed explanation goes here 
     xsi = dataset(1:length(dataset)-1);
     label = dataset(end);
-    taken = false;
+    taken = true;
     if dot(weights, xsi * label) <= 0
-        taken = true;
+        taken = false;
         %disp('asdf');
         weights = weights + ((xsi * label) / numNeurons);
     end

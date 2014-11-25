@@ -12,7 +12,6 @@ function success = perceptronTraining(datasets, weights, nmax)
             success = success && taken;
         end
         if success
-            disp('success');
             break;
         end
     end
