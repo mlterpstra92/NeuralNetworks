@@ -18,3 +18,14 @@ Rosenblatt's perceptron learning algorithm\cite{rosenblatt1958perceptron} is use
 In essence, it works by adapting the neuron weights to keep the perceptron's data consistent with the pattern data.
 
 The neuron weight \(w\) of the perceptron are initialized to zero.
+
+EXPLAIN LINEAR SEPERABILITY A BIT.
+
+The probability for a pattern with random \(S^\mu = \pm1\) to be linearly seperable is given by\cite{perceptron_slides2}:
+\[
+P_{l.s.}(P, N) = 
+\begin{cases}
+2^P,& \text{for } P\leq N \\
+    2\sum_{i=0}^{N-1},              & \text{for } P > N
+\end{cases}
+\]
