@@ -61,3 +61,5 @@
 # Simulink Code Generation
 slprj/
 
+# Temp Matlab files
+*.m~
