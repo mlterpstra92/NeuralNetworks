@@ -4,15 +4,15 @@ function fractions = OftenTraining(N, alphas, nd, nmax )
     clf;
     Ps = round(alphas * N);
     allSuccesses = [];
-    for numPatterns=Ps
+    parfor i=1:size(Ps, 2)
         numSuccesses = 0;
         for n=1:nd
-            patterns = generateDatasets(numPatterns, N);
+            patterns = generateDatasets(Ps(i), N);
             if perceptronTraining(patterns, zeros(1, N), nmax)
                 numSuccesses = numSuccesses + 1;
             end
         end
-        disp(['P = ', num2str(numPatterns), '/', num2str(Ps(end))]);
+        disp(['P = ', num2str(Ps(i)), '/', num2str(Ps(end))]);
         allSuccesses = [allSuccesses; numSuccesses];
     end
     fractions = allSuccesses / nd;
