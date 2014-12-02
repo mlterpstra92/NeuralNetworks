@@ -1,7 +1,20 @@
+%!TEX root = report.tex
 The perceptron is one of the most basic building blocks for neural networks.
-A perceptron has \(N\) input neurons, and just a single output neuron that can have values \(\pm1\).
+A perceptron has \(N\) input neurons, and just a single output neuron (called the label) that can have values \(\pm1\).
 All input neurons are connected to the output neuron, using adaptive weights.
 The input neurons are written as \(\xi\).
+The label (output neuron) is written as \(S\).
 
+We're regarding multiple patterns bundled in a dataset:
+\[ \mathbb{D} = \left\{ \xi^\mu, S^\mu \right\} _{\mu=1}^{P} \]
 
-Rosenblatt's perceptron algorithm is used to train a perceptron.
+where \(P\) is the number of patterns in the dataset, and \(\mu\) is the index variable that addresses the different patterns.
+
+The input neurons \(\xi^\mu\) are modelled as vectors in \(\mathbb{R}^N\), and are generated as random Gaussian components between zero and one.
+
+The labels \(S^\mu\) are generated independently to be \(\pm1\) with equal probability.
+
+Rosenblatt's perceptron learning algorithm\cite{rosenblatt1958perceptron} is used to train perceptrons.
+In essence, it works by adapting the neuron weights to keep the perceptron's data consistent with the pattern data.
+
+The neuron weight \(w\) of the perceptron are initialized to zero.
