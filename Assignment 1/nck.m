@@ -1,6 +1,4 @@
 function out = nck( n, k )
-%NCK Summary of this function goes here
-%   Detailed explanation goes here
   if(k >  n)
     error('N < K');
   elseif(k == 0)
