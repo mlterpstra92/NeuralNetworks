@@ -49,6 +49,15 @@
 \titleformat{\section}[block]{\large\scshape\centering}{\thesection.}{1em}{} % Change the look of the section titles
 \titleformat{\subsection}[block]{\large}{\thesubsection.}{1em}{} % Change the look of the section titles
 
+\usepackage{nonfloat}
+\newcommand\myfigure[1]{%
+\medskip\noindent\begin{minipage}{\columnwidth}
+\centering%
+#1%
+%figure,caption, and label go here
+\end{minipage}\medskip}
+
+
 \usepackage{fancyhdr} % Headers and footers
 \pagestyle{fancy} % All pages have headers and footers
 \fancyhead{} % Blank out the default header
@@ -96,7 +105,7 @@
 \begin{multicols}{2} % Two-column layout throughout the main article text
 \section{Introduction}
 \input{intro.tex}
-\section{implementation}
+\section{Implementation}
 \input{implementation.tex}
 \section{Results}
 \input{results.tex}

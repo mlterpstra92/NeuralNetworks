@@ -1,23 +1,29 @@
 %!TEX root = report.tex
-When running the perceptron we obtained several interesting results. We have ran the perceptron for 25, 50 and 100 neurons with $n_d = 200$ and $n_{max} = 500$. Using these parameters, we determined the fraction of successes, or cases where the dataset is linearly separable, over the number of runs. The observed values are plotted against the expected fraction of linearly separable datasets.
-\begingroup
-    \centering
-    \includegraphics[width=\linewidth]{success_rate_N_25_nd_200_nmax_500.eps}
-    \captionof{figure}{Observed success rate versus expected success rate for 25 neurons\newline}\label{fig:25neurons}
-\endgroup
-
-
-Figure~\ref{fig:25neurons} plots the observed linearly separable fraction versus the expected fraction for 25 neurons. It is clear that as $\alpha$ increases the fraction of linearly separable function decreases. This is a first indication that there exists a critical value $\alpha_{c}$ above which there exists no linearly separable dataset.
-\begingroup
-    \centering
-    \includegraphics[width=\linewidth]{success_rate_N_50_nd_200_nmax_500.eps}
-    \captionof{figure}{Observed success rate versus expected success rate for 50 neurons\newline}\label{fig:50neurons}
-\endgroup
-
-
-\begingroup
-    \centering
-    \includegraphics[width=\linewidth]{success_rate_N_100_nd_200_nmax_500.eps}
-    \captionof{figure}{Observed success rate versus expected success rate for 100 neurons\newline}\label{fig:100neurons}
-\endgroup
-
+When running the perceptron we obtained several interesting results. We have ran the perceptron for 25, 50 and 100 neurons with $n_d = 200$ and $n_{max} = 500$. 
+Using these parameters, we determined the fraction of successes, or cases where the dataset is linearly separable, over the number of runs. 
+The observed values are plotted against the expected fraction of linearly separable datasets.
+\myfigure{
+	\includegraphics[width=.9\columnwidth]{success_rate_N_25_nd_200_nmax_500.eps}%
+	\figcaption{\emph{Observed success rate versus expected success rate for 25 neurons}}
+	\label{fig:25neurons}
+}
+Figure~\ref{fig:25neurons} plots the observed linearly separable fraction versus the expected fraction for 25 neurons. 
+It is clear that as $\alpha$ increases the fraction of linearly separable function decreases. 
+This is a first indication that there exists a critical value $\alpha_{c}$ above which there exists no linearly separable dataset. 
+\myfigure{
+	\includegraphics[width=.9\columnwidth]{success_rate_N_50_nd_200_nmax_500.eps}%
+	\figcaption{\emph{Observed success rate versus expected success rate for 50 neurons}}
+	\label{fig:50neurons}
+}
+The result of using 50 neurons as opposed to 25 neurons shows a few interesting properties. The expected number of linearly separable datasets now shows a steeper descent and a better approximation of the step function (for some value $x$ and a constant $c$: 
+$f(x) = \left\{ 
+  \begin{array}{l l}
+    1 & x < c\\
+    0 & x > c
+  \end{array} \right.$
+The constant $c$ is in our case equal to the critical value $\alpha_c$. According to the better images, we interpolate the value $\alpha_c$ to be $1.75 \leq \alpha_c \leq 2$. However, we can only know this for sure as the number of neurons approaches $\infty$.
+\myfigure{
+	\includegraphics[width=.9\columnwidth]{success_rate_N_100_nd_200_nmax_500.eps}%
+	\figcaption{\emph{Observed success rate versus expected success rate for 100 neurons}}
+	\label{fig:100neurons}
+}

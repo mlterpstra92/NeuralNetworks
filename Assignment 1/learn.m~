@@ -1,9 +1,0 @@
-function weights = learn( dataset, weights, numNeurons )
-%LEARN Summary of this function goes here
-%   Detailed explanation goes here
-    for weight=weights
-        if weight*dataset(1:length(dataset)-1)*dataset(length(dataset))
-    end
-
-end
-
