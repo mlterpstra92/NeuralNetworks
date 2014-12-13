@@ -41,7 +41,7 @@
 
 \usepackage{abstract} % Allows abstract customization
 \renewcommand{\abstractnamefont}{\normalfont\bfseries} % Set the "Abstract" text to bold
-\renewcommand{\abstracttextfont}{\normalfont\small\itshape} % Set the abstract itself to small italic text
+\renewcommand{\abstracttextfont}{\normalfont\small} % Set the abstract itself to small italic text
 
 \usepackage{titlesec} % Allows customization of titles
 \renewcommand\thesection{\Roman{section}} % Roman numerals for the sections
@@ -93,9 +93,10 @@
 %----------------------------------------------------------------------------------------
 
 \begin{abstract}
-
-\noindent We have implemented one of the simplest neural networks, called the Perceptron which is a binary classifier network. We have ran this network for several different numbers of input neurons and several numbers of input patterns. The results of running this algorithm for a certain amount of steps are subsequently compared against expected values for the same input numbers. Moreover, we try to predict what the output of larger networks will look like based on results of comparing smaller networks. 
-
+\noindent The \emph{perceptron}, one of the simplest binary classifier neural networks, has been implemented.
+Multiple sizes of this network have been trained for several numbers of independent input patterns.
+The fractions of succesful trainings of these networks are compared with theoretically expected fractions.
+Moreover, a prediction is made for what kind of results to expect for even larger networks, by comparing multiple smaller networks. 
 \end{abstract}
 
 %----------------------------------------------------------------------------------------
