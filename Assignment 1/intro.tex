@@ -1,31 +1,46 @@
 %!TEX root = report.tex
 The perceptron is one of the most basic building blocks for neural networks.
-A perceptron has \(N\) input neurons, and just a single output neuron (called the label) that can have values \(\pm1\).
-All input neurons are connected to the output neuron, using adaptive weights.
-The input neurons are written as \(\xi\).
-The label (output neuron) is written as \(S\).
+The perceptron that we're discussing has \(N\) input neurons, and a single output neuron, the \emph{label}, that can have values \(\pm1\).
+All input neurons are connected to the output neuron, using adaptive weights \(\vec{w}\).
 
 We're regarding multiple patterns bundled in a dataset:
-\[ \mathbb{D} = \left\{ \xi^\mu, S^\mu \right\} _{\mu=1}^{P} \]
+\[ \mathbb{D} = \left\{ \vec{\xi}^\mu, S^\mu \right\} _{\mu=1}^{P} \]
+where \(P\) is the number of patterns in the dataset.
+The input neurons and label of a pattern \(\mu\) are written as \(\vec{\xi}^\mu\) and \(S^\mu\) respectively.
 
-where \(P\) is the number of patterns in the dataset, and \(\mu\) is the index variable that addresses the different patterns.
+The input neurons \(\vec{\xi}^\mu\) are modelled as vectors in \(\mathbb{R}^N\), and are generated as random Gaussian components between zero and one.
 
-The input neurons \(\xi^\mu\) are modelled as vectors in \(\mathbb{R}^N\), and are generated as random Gaussian components between zero and one.
+The labels \(S^\mu\) are generated to be \(\pm1\) with equal probability, independent of \(\vec{\xi}^\mu\).
 
-The labels \(S^\mu\) are generated independently to be \(\pm1\) with equal probability.
+In the geometrical interpretation, the input patterns \(\vec{\xi}^\mu\) are point in \(N\)-dimensional space with labels \(S^\mu\), and the weight vector \(\vec{w}\) defines a hyperplane in \(\mathbb{R}^N\).
+If it is possible for the hyperplane to separate the points by their labels, the dataset is said to be \emph{linearly seperable}.
+That is, there exists a weight vector for the network that can be used to classify the input patterns to their correct labeling.
+
+The probability for an input pattern with random \(S^\mu = \pm1\) to be linearly seperable is given by\cite{perceptron_slides2}:
+\[
+P_{l.s.}(P, N) = 
+\begin{cases}
+    1                                       & \text{for } P\leq N \\
+    2^{P-1}\sum_{i=0}^{N-1}\binom{P - 1}{i} & \text{for } P > N
+\end{cases}
+\]
 
 Rosenblatt's perceptron learning algorithm\cite{rosenblatt1958perceptron} is used to train perceptrons.
 In essence, it works by adapting the neuron weights to keep the perceptron's data consistent with the pattern data.
 
-The neuron weight \(w\) of the perceptron are initialized to zero.
+The neuron weights \(\vec{w}\) of the perceptron are initialized to zero.
+In every step of the training algorithm, the neurons are adapted using the following update function:
 
-EXPLAIN LINEAR SEPERABILITY A BIT.
-
-The probability for a pattern with random \(S^\mu = \pm1\) to be linearly seperable is given by\cite{perceptron_slides2}:
 \[
-P_{l.s.}(P, N) = 
+\vec{w}(t + 1) = 
 \begin{cases}
-2^P,& \text{for } P\leq N \\
-    2\sum_{i=0}^{N-1},              & \text{for } P > N
+    \vec{w}(t) + \frac{1}{N}\vec{\xi}^{\mu(t)}S^{\mu(t)}    & \text{if } E^{\mu(t)} \leq 0 \\
+    \vec{w}(t)                                              & \text{otherwise}
 \end{cases}
 \]
+where \(E^{\mu(t)} = \vec{w}(t)\cdot\vec{\xi}^{\mu(t)}S^{\mu(t)}\).
+
+In other words: If the current weights assign an incorrect label to the input pattern, i.e. \(\vec{w}(t)\cdot\vec{\xi}^{\mu(t)}S^{\mu(t)} \leq 0\), a Hebbian term is added to the weights, i.e. \(\vec{w}(t + 1) = \vec{w}(t) + \frac{1}{N}\vec{\xi}^{\mu(t)}S^{\mu(t)}\), to tilt the hyperplane in the correct orientation for that particular input pattern.
+
+The perceptron convergence theorem\cite{perceptron_slides1} states the following:
+If the dataset \(\mathbb{D} = \left\{ \xi^\mu, S^\mu \right\} _{\mu=1}^{P}\) is linearly seperable, the Rosenblatt Perceptron algorithm converges and yields a weight vector \(\vec{w}\) that assigns the correct labels to all input patterns.
