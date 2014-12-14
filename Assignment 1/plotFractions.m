@@ -66,6 +66,6 @@ legend boxoff; % Otherwise the larger font doesn't fit in the box :(
 
 xlabel('\alpha', 'FontSize', 20);
 ylabel('Success rate', 'FontSize', 20, 'FontName', 'FixedWidth');
-title('Expected success rates','FontSize', 20);
+title('Expected success rates','FontSize', 20, 'FontName', 'FixedWidth');
 
 print(gcf, '-depsc', ['expected_success_rates_N_', num2str(Ns(1)), '_', num2str(Ns(2)), '_', num2str(Ns(3))]);
