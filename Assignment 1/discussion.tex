@@ -1,7 +1,7 @@
 %!TEX root = report.tex
 It can be seen in Figure~\ref{fig:25neurons} that the observed rate isn't as smooth as the expected rate.
 This is in contrast to Figures~\ref{fig:50neurons} and~\ref{fig:100neurons}, where the observed rate behaves more smoothly.
-In figure~\ref{fig:25neurons} it is visible that the observed curve is not smooth. This is due to a smaller number datasets\footnote{Since \(P = \alpha N\).}, and thus a lower statistical significance.
+In Figure~\ref{fig:25neurons} it is visible that the observed curve is not smooth. This is due to a smaller number datasets\footnote{Since \(P = \alpha N\).}, and thus a lower statistical significance.
 
 From the trend observed in Figures~\ref{fig:25neurons}-\ref{fig:100neurons}, it seems that the success rate approaches a step function.
 This is in accordance with the expectation.
@@ -28,4 +28,8 @@ That is:
 	\end{cases}
 \end{equation}
 
- This value $\alpha$, as found in section~\ref{sec:results}, is also called the storage capacity of the network. The found values in equation~\ref{eq:step} are in accordance with values found in the literature\cite{perceptron_slides2}. However, we did not actually find $\alpha$ to be these values but it is slightly lower. This means that we have found some datasets that are linearly separable which our network was not able to separate. This is due our introduction of the value of $n_{max}$. Our implementation performs only at most $n_{max}$ and for these datasets more iterations than $n_{max}$ were needed to find the weight vector that correctly classifies the dataset.
+ The expected critical value found in Equation~\ref{eq:step}, \(\alpha=2\), which is also called the storage capacity, is in accordance with the value found in the literature\cite{perceptron_slides2}.
+ Our observed value, \(\alpha = 1.75\), as found in Section~\ref{sec:results}, deviates from this; it is slightly lower.
+ 
+ This suggests that we have used some datasets that \emph{were} linearly separable, but our network was not able to separate it within \(n_{max}\) sweeps.
+ Our implementation performs at most \(n_{max}\) sweeps, and for these datasets more sweeps were needed to find the weight vector that correctly classifies the dataset.
