@@ -8,15 +8,15 @@ We're regarding multiple patterns bundled in a dataset:
 where \(P\) is the number of patterns in the dataset.
 The input neurons and label of a pattern \(\mu\) are written as \(\vec{\xi}^\mu\) and \(S^\mu\) respectively.
 
-The input neurons \(\vec{\xi}^\mu\) are modelled as vectors in \(\mathbb{R}^N\), and are generated as random Gaussian components between zero and one.
+The input neurons \(\vec{\xi}^\mu\) are modeled as vectors in \(\mathbb{R}^N\), and are generated as random Gaussian components between zero and one.
 
 The labels \(S^\mu\) are generated to be \(\pm1\) with equal probability, independent of \(\vec{\xi}^\mu\).
 
 In the geometrical interpretation, the input patterns \(\vec{\xi}^\mu\) are point in \(N\)-dimensional space with labels \(S^\mu\), and the weight vector \(\vec{w}\) defines a hyperplane in \(\mathbb{R}^N\).
-If it is possible for the hyperplane to separate the points by their labels, the dataset is said to be \emph{linearly seperable}.
+If it is possible for the hyperplane to separate the points by their labels, the dataset is said to be \emph{linearly separable}.
 That is, there exists a weight vector for the network that can be used to classify the input patterns to their correct labeling.
 
-The probability for an input pattern with random \(S^\mu = \pm1\) to be linearly seperable is given by\cite{perceptron_slides2}:
+The probability for an input pattern with random \(S^\mu = \pm1\) to be linearly separable is given by\cite{perceptron_slides2}:
 \[
 P_{l.s.}(P, N) = 
 \begin{cases}
@@ -43,4 +43,4 @@ where \(E^{\mu(t)} = \vec{w}(t)\cdot\vec{\xi}^{\mu(t)}S^{\mu(t)}\).
 In other words: If the current weights assign an incorrect label to the input pattern, i.e. \(\vec{w}(t)\cdot\vec{\xi}^{\mu(t)}S^{\mu(t)} \leq 0\), a Hebbian term is added to the weights, i.e. \(\vec{w}(t + 1) = \vec{w}(t) + \frac{1}{N}\vec{\xi}^{\mu(t)}S^{\mu(t)}\), to tilt the hyperplane in the correct orientation for that particular input pattern.
 
 The perceptron convergence theorem\cite{perceptron_slides1} states the following:
-If the dataset \(\mathbb{D} = \left\{ \vec{\xi}^\mu, S^\mu \right\} _{\mu=1}^{P}\) is linearly seperable, the Rosenblatt Perceptron algorithm converges and yields a weight vector \(\vec{w}\) that assigns the correct labels to all input patterns.
+If the dataset \(\mathbb{D} = \left\{ \vec{\xi}^\mu, S^\mu \right\} _{\mu=1}^{P}\) is linearly separable, the Rosenblatt Perceptron algorithm converges and yields a weight vector \(\vec{w}\) that assigns the correct labels to all input patterns.
