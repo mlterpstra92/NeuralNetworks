@@ -7,19 +7,19 @@ alphas = 0.7:0.1:3;
 
 % The number of independently generated datasets used per value of N
 % (Higher = better statistical result)
-n_D = 50;
+n_D = 200;
 
 % Maximal number of sweeps through the dataset before giving up separating
 % the dataset.
-n_max = 100;
+n_max = 500;
 
 % 'fractions' is a matrix containing one row for every N in Ns.
 % The rows contain the fractions of succesfully trained datasets for that
 % size, as a function of alpha.
 fractions = zeros(length(Ns), length(alphas));
 for i = 1:length(Ns)
-    disp(['Training network of size N = ', num2str(N), '...']);
     N = Ns(i);
+    disp(['Training network of size N = ', num2str(N), '...']);
     fractions(i, :) = OftenTraining(N, alphas, n_D, n_max);
     disp(['... Finished training network of size N = ', num2str(N)]);
 end
