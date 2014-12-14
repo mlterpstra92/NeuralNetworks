@@ -43,4 +43,4 @@ where \(E^{\mu(t)} = \vec{w}(t)\cdot\vec{\xi}^{\mu(t)}S^{\mu(t)}\).
 In other words: If the current weights assign an incorrect label to the input pattern, i.e. \(\vec{w}(t)\cdot\vec{\xi}^{\mu(t)}S^{\mu(t)} \leq 0\), a Hebbian term is added to the weights, i.e. \(\vec{w}(t + 1) = \vec{w}(t) + \frac{1}{N}\vec{\xi}^{\mu(t)}S^{\mu(t)}\), to tilt the hyperplane in the correct orientation for that particular input pattern.
 
 The perceptron convergence theorem\cite{perceptron_slides1} states the following:
-If the dataset \(\mathbb{D} = \left\{ \xi^\mu, S^\mu \right\} _{\mu=1}^{P}\) is linearly seperable, the Rosenblatt Perceptron algorithm converges and yields a weight vector \(\vec{w}\) that assigns the correct labels to all input patterns.
+If the dataset \(\mathbb{D} = \left\{ \vec{\xi}^\mu, S^\mu \right\} _{\mu=1}^{P}\) is linearly seperable, the Rosenblatt Perceptron algorithm converges and yields a weight vector \(\vec{w}\) that assigns the correct labels to all input patterns.
