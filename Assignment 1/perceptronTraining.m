@@ -1,4 +1,3 @@
-
 function success = perceptronTraining(datasets, weights, nmax)
 %PERCEPTRONTRAINING Summary of this function goes here
 %   Detailed explanation goes here

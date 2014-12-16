@@ -1,0 +1,13 @@
+%!TEX root = report.tex
+The Rosenblatt algorithm is shown to be quite successful in training perceptrons.
+When increasing the size of the network, the success rate converges towards the step function in Equation~\ref{eq:step}.
+
+This leads us to conclude that the capacity of an \(N\)-dimensional hyperplane (the weight vector \(\vec{w}\)) is \(2N\).
+That is, a perceptron with \(N\) input neurons can store \(2N\) independent input patterns.
+
+We have observed the storage capacity $\alpha_c$ as expressed by the number of input patterns, $P$, and the number of input neurons of the network, $N$.
+We found that the number of input patterns the network can separate is $P = 1.75 \cdot N$.
+This is close value found in the literature, which is $\alpha_c = 2$.
+This difference is due to the fact that some datasets were not classified as linearly separable while they actually \emph{were} linearly separable.
+This happens because of our introduction of maximum number of sweeps $n_{max}$, which could terminate the algorithm after $n_{max}$ steps while it has not converged yet.
+As a result, the entire step curve is shifted, resulting in $\alpha_{c, observed} = 1.75$.
