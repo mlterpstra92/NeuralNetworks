@@ -48,8 +48,50 @@
 \renewcommand\thesubsection{\Roman{subsection}} % Roman numerals for subsections
 \titleformat{\section}[block]{\large\scshape\centering}{\thesection.}{1em}{} % Change the look of the section titles
 \titleformat{\subsection}[block]{\large}{\thesubsection.}{1em}{} % Change the look of the section titles
+\usepackage{listings}
+\usepackage{color}
 
-\usepackage{nonfloat}
+\definecolor{Blue}{rgb}{0,0,0.5}
+\definecolor{Green}{rgb}{0,0.75,0.0}
+\definecolor{LightGray}{rgb}{0.6,0.6,0.6}
+\definecolor{DarkGray}{rgb}{0.3,0.3,0.3}
+\newcommand\matlabstyle{\lstset{language=Matlab,
+   keywords={function,uint8,uint16,uint32,double,break,case,catch,continue,else,elseif,end,for,global,if,otherwise,persistent,return,switch,try,while},
+   basicstyle=\ttfamily\footnotesize,
+   breaklines=true,
+   keywordstyle=\bfseries\color{Blue},
+   commentstyle=\itshape\color{LightGray},
+   stringstyle=\color{Green},
+   numbers=left,
+   numberstyle=\tiny\color{DarkGray},
+   stepnumber=1,
+   numbersep=10pt,
+   backgroundcolor=\color{white},
+   tabsize=2,
+   showspaces=false,
+   showstringspaces=false,
+   captionpos=b}}
+
+
+%Use command \code for code snippets
+\newcommand{\code}[1]{\textnormal{\texttt{#1}}}
+
+% Matlab environment
+\lstnewenvironment{matlab}[1][]
+{
+\matlabstyle
+\lstset{#1}
+}
+{}
+
+% Matlab for external files
+\newcommand\matlabexternal[2][]{{
+\matlabstyle
+\lstinputlisting[#1]{#2}}}
+
+% Matlab for inline
+\newcommand\matlabinline[1]{{\matlabstyle\lstinline!#1!}}
+
 \newcommand\myfigure[1]{%
 \medskip\noindent\begin{minipage}{\columnwidth}
 \centering%
@@ -93,7 +135,7 @@
 %----------------------------------------------------------------------------------------
 
 \begin{abstract}
-\noindent This is an abstract. 
+\noindent Aside from storing data, a perceptron can also be trained to learn a new rule. In this case a teacher perceptron has separated data and a student perceptron must learn the rule. To learn this rule, we have modified our solution of assignment 1 to implement the Min-Over algorithm. Using this algorithm, a student perceptron can successfully learn a rule from a teacher perceptron. We have also determined the generalization error which determines the probability of disagreement between student and teacher for an arbitrary dataset. 
 \end{abstract}
 
 %----------------------------------------------------------------------------------------
@@ -134,5 +176,9 @@
 %----------------------------------------------------------------------------------------
 
 \end{multicols}
+\clearpage
+\appendix
+\section{Code}
+\matlabexternal{../minover.m}
 
 \end{document}

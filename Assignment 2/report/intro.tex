@@ -1,1 +1,17 @@
 %!TEX root = report.tex
+The perceptron was seen in the previous assignment as the basic building block for complex neural networks. The previous implementation was only capable of storing rules. In this assignment it shall be discovered whether a perceptron is capable of learning a (linearly separable) rule from example data. 
+
+To do this, a so called teacher perceptron has defined patterns with example data $\mathbb{D} = \left\{ \pmb{\xi}^\mu, S^\mu_{R} \right\} _{\mu=1}^{P}$
+ with the output labels $S^\mu \pm 1$ defined as $S^\mu = \mbox{sign}(\mathbf{w}^{*} \cdot \pmb{\xi}^\mu)$. 
+
+In order to learn a rule, a student perceptron must be able to derive the rule as the examples are separated by the teacher. Because the separation by the teacher may not be perfect it is convenient to find the weight vector that separates the two classes of data the best, i.e. the vector that has maximum stability. The perceptron of maximal stability maximizes the minimal distance between the hyperplane and the examples\cite{perceptron_slides2}. This achieves maximum distance between the separating classes, thus making it insensitive to noise or small variations in $\pmb{\xi}^\mu$.
+
+One possible option to find this vector is by using the Min-Over algorithm. This algorithm determines the example with the lowest stability w.r.t. $\mathbf{w}(t)$. In other words, it finds 
+\[ 
+\mu(t)\mbox{ with } \kappa^{\mu(t)} = \underset{\nu}{\mbox{min}} 
+\left\{
+\kappa^\nu(t) = \frac{\mathbf{w}(t)\pmb{\xi}^{\nu} S^{\mu}_R}{\mbox{\big|}\mathbf{w}(t)\mbox{\big|}} 
+\right\}
+\].
+
+After this example is found the weight vector is updated to move away from this example, thus increasing the stability. The rule shall be called learned by the student perceptron once the stabilities do not change anymore.
