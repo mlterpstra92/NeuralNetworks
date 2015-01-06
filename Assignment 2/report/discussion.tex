@@ -1,1 +1,22 @@
 %!TEX root = report.tex
+\subsection{Ascending generalization error}
+In Figures~\ref{fig:generalizationerror_50}-\ref{fig:generalizationerror_150}, it can be seen that the generalization error decreases rapidly in the first few steps of the algorithm.
+After that, it slowly ascends towards a more stable value.
+The generalization error is the probability that the teacher perceptron and student perceptron will disagree on novel data.
+
+It was not immediately clear why the generalization error would \emph{increase} while the algorithm is running, but it makes sense, since the input vectors are not guaranteed to be in the most stable position for the teacher perceptron.
+
+E.g., an input vector might \emph{barely} be classified as \(+1\) by the teacher perceptron, while the student perceptron may treat this input vector as a \emph{typical} \(+1\) pattern, while it actually was a borderline case.
+This causes the student weight vector to be slightly tilted, and this has as an effect that the student and teacher will disagree on novel data.
+
+Generally, using more input patterns will cover a larger portion of the input space.
+Intuitively, we expect there to be fewer borderline cases when input vectors are all over the place, since borderline cases might cancel out, and more regular cases compensate for them.
+Figures~\ref{fig:generalizationerror_50}-\ref{fig:generalizationerror_150} (with increasing \(P\)) do not refute this hypothesis, but also do not evidently confirm it.
+
+\subsection{Learning curve}
+Figure~\ref{fig:learningcurve} shows the learning curve, which is the generalization error as a function of \(\alpha\).
+The curve descends nicely as \(\alpha\) increases.
+This means that the student perceptron will be more in agreement with the teacher perceptron as the number of input patterns increases.
+
+This is to be expected because every input pattern, combined with a labeling made by the teacher, is essentially a clue for the student to where the teacher's weight vector is pointing.
+The fact that there are more clues leads to a more accurate approximation, and this results in more agreement.
