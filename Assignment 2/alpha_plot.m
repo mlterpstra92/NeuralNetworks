@@ -2,19 +2,22 @@
 alphas = 0.1:0.1:5;
 N = 20;
 delta = 1e-5;
-n_max = 400;
+n_max = 100;
 teacherVector = ones(N, 1);
 learning_curve = zeros(size(alphas));
-innerlimit = 100;
+innerlimit = 10;
 parfor i=1:length(alphas)
     alpha = alphas(i);        
     disp(['Calculating minover for alpha = ', num2str(alpha)]);
     innervals = zeros(1, innerlimit);
+    P = round(alpha * N);
     for j=1:innerlimit
-        P = round(alpha * N);
-        innervals(j) = minover_generalization_error(N, P, delta, n_max, teacherVector, 0);
+        innervals(j) = minover_generalization_error(N, P, delta, n_max, teacherVector, 0.05);
     end
     learning_curve(i) = mean(innervals);
 end
 
 plot(alphas, learning_curve);
+xlabel('time');
+ylabel('alpha');
+title('Generalization error as a funtion of alpha');
