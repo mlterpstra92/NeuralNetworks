@@ -94,13 +94,14 @@
 
 % Matlab for inline
 \newcommand\matlabinline[1]{{\matlabstyle\lstinline!#1!}}
-
+\usepackage{nonfloat}
 \newcommand\myfigure[1]{%
 \medskip\noindent\begin{minipage}{\columnwidth}
 \centering%
 #1%
 %figure,caption, and label go here
 \end{minipage}\medskip}
+
 
 
 \usepackage{fancyhdr} % Headers and footers
@@ -185,6 +186,7 @@ We have also determined the generalization error which determines the probabilit
 \clearpage
 \appendix
 \section{Code}
+\label{app:code}
 \matlabexternal{../minover.m}
 
 \end{document}

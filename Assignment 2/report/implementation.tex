@@ -1,1 +1,16 @@
 %!TEX root = report.tex
+The implementation in MATLAB of the Min-Over algorithm is fairly straightforward. The modification of the code of the previous assignment proved to be a quick task and the student perceptron started learning quickly. 
+
+We chose to implement the teacher vector as $\mathbf{w}^{*} = (1, 1, \ldots,1)^\text{T}$ for convenience. This is possible without loss of generality because this vector also has the property that $\big|\mathbf{w}^{*}\big|^2 = \text{N}$, thus making it not any more special than any other vector with random elements that have this property.
+
+The Min-Over algorithm can be implemented in the following pseudocode:
+\begin{lstlisting}[mathescape]
+w(0) = 0
+for t in [0, 1, 2, ...]:
+	$\kappa^{\nu}(t) = \frac{\mathbf{w}(t) \cdot \pmb{\xi}^\nu S^\nu_R}{\abs{\mathbf{w}(t)}}$
+	$\mu(t) = \underset{\nu}{\operatorname{min}} \left\{\kappa^\nu (t)\right\}$
+	$\mathbf{w}(t + 1) = \mathbf{w}(t) + \frac{1}{N}\xi^{\mu(t)}S^{\mu(t)}_R$
+return $\mathbf{w}$
+\end{lstlisting}
+
+The actual implementation in MATLAB can be found in Appendix~\ref{app:code}. Moreover, we have implemented noise in generating the labels. With a random change of $\lambda$ the labels are flipped which may influence the results. The actual results are discussed in section~\ref{sec:discussion}.
