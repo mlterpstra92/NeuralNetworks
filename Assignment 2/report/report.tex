@@ -21,6 +21,7 @@
 \documentclass[twoside]{article}
 
 \usepackage{graphicx} % Package to include images
+\usepackage{appendix}
 
 \usepackage{amsmath}
 
@@ -184,9 +185,12 @@ We have also determined the generalization error which determines the probabilit
 
 \end{multicols}
 \clearpage
+\section*{Appendix}
+\begin{appendices}
 \appendix
 \section{Code}
 \label{app:code}
 \matlabexternal{../minover.m}
+\end{appendices}
 
 \end{document}
