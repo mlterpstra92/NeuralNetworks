@@ -9,6 +9,6 @@ This is a form of regularization to prevent overfitting.
 When early stopping is applied the number of iterations of algorithms as gradient descent is limited when it is detected that the machine is overfitting. 
 
 Unfortunately, there are no formal methods to determine when to stop, as there are only ad-hoc manners to prevent overfitting. 
-In our cases, we observe that overfitting can occur as soon as after ?? iterations. 
-Therefore, one way to perform early stopping for our dataset is to monitor the generalization error after ?? iterations.
+In our cases, we observe that overfitting can occur as soon as after 500 iterations (see figure~\ref{fig:overfitting}). 
+Therefore, one way to perform early stopping for our dataset is to monitor the generalization error after 500 iterations.
 If it increases as opposed to the previous iteration, the algorithm could decide to stop further training as it is starting to overfit.
