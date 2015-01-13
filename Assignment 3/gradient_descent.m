@@ -2,7 +2,7 @@ close all;
 
 t_max = 1000;
 learning_rate = 0.01;
-P = 100; % The size of the training set
+P = 1000; % The size of the training set
 
 % Load the dataset
 data3 = load('data3');
