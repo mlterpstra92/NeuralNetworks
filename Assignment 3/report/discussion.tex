@@ -1,1 +1,14 @@
 %!TEX root = report.tex
+One of the dangers of virtually every learning algorithm is overfitting. 
+In this case, the trained model is too specific for the data and cannot correctly predict previously unforeseen observations because the generalization error increases as a result to a better fit to the training data. 
+When the model is overfitted, it is highly unbiased towards the given data because it views all data as 'typical'.
+As a result, the variance beyond the dataset is very large; the small fluctuations in the dataset are given too much meaning, causing it to incorrectly label data outside the trainingset.
+
+One way to prevent overfitting is to perform the action of early stopping. 
+This is a form of regularization to prevent overfitting. 
+When early stopping is applied the number of iterations of algorithms as gradient descent is limited when it is detected that the machine is overfitting. 
+
+Unfortunately, there are no formal methods to determine when to stop, as there are only ad-hoc manners to prevent overfitting. 
+In our cases, we observe that overfitting can occur as soon as after 500 iterations (see figure~\ref{fig:overfitting}). 
+Therefore, one way to perform early stopping for our dataset is to monitor the generalization error after 500 iterations.
+If it increases as opposed to the previous iteration, the algorithm could decide to stop further training as it is starting to overfit.
