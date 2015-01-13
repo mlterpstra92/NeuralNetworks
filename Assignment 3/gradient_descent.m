@@ -1,5 +1,5 @@
 t_max = 200;
-learning_rate = 0.1;
+learning_rate = 0.01;
 P = 100; % The size of the training set
 
 % Load the dataset

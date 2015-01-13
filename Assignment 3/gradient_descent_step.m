@@ -9,4 +9,3 @@ function [w_1, w_2] = gradient_descent_step(w_1, w_2, xi_nu, tau_nu, learning_ra
     w_1 = w_1 - learning_rate * gradient_1;
     w_2 = w_2 - learning_rate * gradient_2;
 end
-
