@@ -1,6 +1,6 @@
 close all;
 
-t_max = 200;
+t_max = 1000;
 learning_rate = 0.01;
 P = 100; % The size of the training set
 
@@ -55,7 +55,7 @@ plot(1:t_max, test_costs, 'r');
 xlabel('t');
 ylabel('E');
 ylim([0, max([test_costs(:); training_cost(:)])]);
-title({'Cost functions', ['Learning rate: ', num2str(learning_rate)]});
+title({'Cost functions', ['\eta = ', num2str(learning_rate), ', P = ', num2str(P)], });
 legend('Training cost', 'Test cost');
 
 figure;
