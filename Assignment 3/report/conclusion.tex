@@ -1,1 +1,13 @@
 %!TEX root = report.tex
+In order to successfully implement gradient descent as a learning algorithm, one has to be careful in tuning its parameters. 
+If the parameters are chosen incorrectly, the algorithm can quickly overfit (high variance) or underfit (high bias).
+For our given dataset we have found that these parameters are most suited:
+\begin{align*}
+\eta &= 0.01 \\
+P &= 200 \\
+t_{max} &= 400
+\end{align*}
+
+We have found that these parameters do indeed work correctly, as figure~\ref{fig:costs_t400_lr001} illustrate. 
+The training error approaches 0 quite quickly and the test error approaches a constant value which is reasonably small (\(< 0.05\)).
+We are quite pleased with these results.
