@@ -47,30 +47,32 @@ The gradient descent update for the weight vectors \(\mathbf{w}_j\) with \(j \in
 where \(\eta\) is the learning rate, and \(\nabla_{\mathbf{w}_j}\) denotes the gradient with respect to \(\mathbf{w}_j\).
 
 \(\nabla_{\mathbf{w}_j}e^\nu\), that is the gradient of the contribution of a single example to the cost function with respect to \(\mathbf{w}_j\), is given by:
-\begin{align*}
-	\nabla_{\mathbf{w}_j}e^\nu
-	&= \\
-	\frac{1}{2} \nabla_{\mathbf{w}_j} \left( 
-		\sigma(\pmb{\xi}^\nu) - \tau(\pmb{\xi}^\nu)
-	\right)^2
-	&= \\
-	(\sigma(\pmb{\xi}^\nu) - \tau(\pmb{\xi}^\nu))
-	\nabla_{\mathbf{w}_j}
-	\sigma(\pmb{\xi}^\nu)
-	&= \\
-	(\sigma(\pmb{\xi}^\nu) - \tau(\pmb{\xi}^\nu))
-	\nabla_{\mathbf{w}_j}
-	\tanh(\mathbf{w}_j\cdot\pmb{\xi}^\nu)
-	&= \\
-	(\sigma(\pmb{\xi}^\nu) - \tau(\pmb{\xi}^\nu))
-	(1 - \tanh^2(\mathbf{w}_j\cdot\pmb{\xi}^\nu))
-	\nabla_{\mathbf{w}_j}
-	\mathbf{w}_j\cdot\pmb{\xi}^\nu
-	&= \\
-	(\sigma(\pmb{\xi}^\nu) - \tau(\pmb{\xi}^\nu))
-	(1 - \tanh^2(\mathbf{w}_j\cdot\pmb{\xi}^\nu))
-	\pmb{\xi}^\nu
-\end{align*}
+\begin{equation} \label{eq:costFunction}
+	\begin{split}
+		\nabla_{\mathbf{w}_j}e^\nu
+		&= \\
+		\frac{1}{2} \nabla_{\mathbf{w}_j} \left( 
+			\sigma(\pmb{\xi}^\nu) - \tau(\pmb{\xi}^\nu)
+		\right)^2
+		&= \\
+		(\sigma(\pmb{\xi}^\nu) - \tau(\pmb{\xi}^\nu))
+		\nabla_{\mathbf{w}_j}
+		\sigma(\pmb{\xi}^\nu)
+		&= \\
+		(\sigma(\pmb{\xi}^\nu) - \tau(\pmb{\xi}^\nu))
+		\nabla_{\mathbf{w}_j}
+		\tanh(\mathbf{w}_j\cdot\pmb{\xi}^\nu)
+		&= \\
+		(\sigma(\pmb{\xi}^\nu) - \tau(\pmb{\xi}^\nu))
+		(1 - \tanh^2(\mathbf{w}_j\cdot\pmb{\xi}^\nu))
+		\nabla_{\mathbf{w}_j}
+		\mathbf{w}_j\cdot\pmb{\xi}^\nu
+		&= \\
+		(\sigma(\pmb{\xi}^\nu) - \tau(\pmb{\xi}^\nu))
+		(1 - \tanh^2(\mathbf{w}_j\cdot\pmb{\xi}^\nu))
+		\pmb{\xi}^\nu 
+	\end{split}
+\end{equation}
 
 Performing the gradient descent update for \(t_{max} \cdot P\) random examples, stochastically results in a descent of the cost functions.
 

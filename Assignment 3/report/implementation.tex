@@ -1,1 +1,9 @@
 %!TEX root = report.tex
+The implementation of gradient descent learning is fairly straightforward. 
+The implementation of the cost function as described in equation~\ref{eq:costFunction} proved very easy and natural to implement in MATLAB.
+An excerpt of our code can be found in appendices~\ref{app:training} and~\ref{app:step}.
+
+For the determination of the generalization error in terms of quadratic deviations we have diverged from the assignment description. 
+In the assignment \(E_{test}\) there is one single loop over the training patterns and the test patterns. 
+However, we have split the training patterns and the test patterns into two separate matrices for clarity and simplicity. 
+This does mean that we are performing two separate loops over two matrices to determine the value \(E_{test}\) as opposed to one loop.
