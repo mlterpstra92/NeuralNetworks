@@ -1,5 +1,7 @@
-t_max = 200;
-learning_rate = 0.1;
+close all;
+
+t_max = 5000;
+learning_rate = 0.02;
 P = 100; % The size of the training set
 
 % Load the dataset
@@ -16,7 +18,6 @@ training_examples = xis(:, 1:P);
 training_taus = taus(1:P);
 test_examples = xis(:, P + 1:end);
 test_taus = taus(P + 1:end);
-
 
 % Initialize the weight vectors
 w_1 = generate_weight_vector(N);
@@ -39,23 +40,23 @@ for t=1:t_max
     % Store the cost functions at this time step
     training_cost = cost_function(training_examples, w_1, w_2, training_taus);
     training_costs(t) = training_cost;
-    disp(['Training cost at t = ', num2str(t), ': ', num2str(training_cost)]);
     
     test_cost = cost_function(test_examples, w_1, w_2, test_taus);
     test_costs(t) = test_cost;
-    disp(['Test cost at t = ', num2str(t), ': ', num2str(test_cost)]);
+    
+    if mod((t/t_max)*100, 5) == 0
+        disp([num2str((t/t_max)*100), '%']);
+    end
 end
 
 plot(1:t_max, training_costs);
+hold on;
+plot(1:t_max, test_costs, 'r');
 xlabel('t');
-ylabel('E_{train}');
-title('Training cost function');
-
-figure;
-plot(1:t_max, test_costs);
-xlabel('t');
-ylabel('E_{test}');
-title('Test cost function');
+ylabel('E');
+ylim([0, max([test_costs(:); training_cost(:)])]);
+title({'Cost functions', ['Learning rate: ', num2str(learning_rate)]});
+legend('Training cost', 'Test cost');
 
 figure;
 bar(w_1);
