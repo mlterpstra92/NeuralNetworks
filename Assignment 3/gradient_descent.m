@@ -1,7 +1,7 @@
 close all;
 
-t_max = 5000;
-learning_rate = 0.02;
+t_max = 200;
+learning_rate = 0.01;
 P = 100; % The size of the training set
 
 % Load the dataset
