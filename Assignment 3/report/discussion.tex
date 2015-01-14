@@ -17,13 +17,17 @@ If it increases as opposed to the previous iteration, the algorithm could decide
 \subsection{Example size variance}
 Except for time variance as described in the section above, another interesting research case is varying the number of training examples. 
 This has been shown in Figures~\ref{fig:costs_P100}-\ref{fig:costs_P500}.
-These figures show three different situations: There is too little verification data, enough verification data or too much verification data. 
+These figures show three different situations: There is too little training data, enough training data, and even more training data. 
 
 In the case of Figure~\ref{fig:costs_P100} one could argue that the training data is not representative for the entire dataset. 
-This causes that the odds of overfitting than with more training data because outliers have a larger influence on the training than with a larger training set.
+This causes that the odds of overfitting is higher than with more training data because outliers have a larger influence on the training than with a larger training set.
 
-In the case of Figure~\ref{fig:costs_P200} one could argue that in this case there is exactly enough data.
-We state that in this case that there is a close to perfect balance between low risk of overfitting and a high significance to the verification of the network.
+In the case of Figure~\ref{fig:costs_P200} one could argue that in this case there is reasonably enough data to use the network.
+We state that in this case that there is a fair balance between the risk of overfitting, the significance to the verification of the network, and the execution time of the training.
 
-In the case of Figure~\ref{fig:costs_P500} we argue that the training dataset is too large. 
-A too large training set implies a too small test set. The effect of a too small test set is that it bears too little statistical significance for the verification of the classification of the neural network.
+In the case of Figure~\ref{fig:costs_P500} we argue that the training dataset is even better.
+A too large training set implies a too small test set.
+In our case, the test set is still 90 \% of the entire dataset, so the test set is still a good representation of the dataset.
+The effect of a too small test set is that it bears too little statistical significance for the verification of the classification of the neural network.
+
+Another consequence of using a too large training set is that the execution time of the training is very large, so one has to be careful with choosing \(P\).
