@@ -1,1 +1,79 @@
 %!TEX root = report.tex
+Gradient descent can be used to minimize the cost function of a simple feedforward neural network.
+The feedforward network that we consider has two layers, and its real-valued output is given by:
+\[
+	\sigma(\pmb{\xi}) = 
+	\tanh(\mathbf{w}_1\cdot \pmb{\xi}) + \tanh(\mathbf{w}_2\cdot \pmb{\xi})
+\]
+The training dataset is given as:
+\[
+\mathbb{D}_{train} =
+	\left\{
+		\pmb{\xi}^\mu, \tau(\pmb{\xi}^\mu)
+	\right\}_{\mu=1}^{P}
+\]
+Likewise, the test dataset is given as:
+\[
+\mathbb{D}_{test} =
+	\left\{
+		\pmb{\xi}^\mu, \tau(\pmb{\xi}^\mu)
+	\right\}_{\mu=1}^{Q}
+\]
+The training dataset comes with real-valued training labels \(\tau(\pmb{\xi}^\mu)\), so the training cost function is given by:
+\[
+	E_{train} = 
+	\frac{1}{2P}
+	\sum_{\mu=1}^P(\sigma(\pmb{\xi}^\mu) - \tau(\pmb{\xi}^\mu))^2
+\]
+Likewise, the test cost function is given by:
+\[
+	E_{test} = 
+	\frac{1}{2Q}
+	\sum_{\mu=1}^Q(\sigma(\pmb{\xi}^\mu) - \tau(\pmb{\xi}^\mu))^2
+\]
+In every learning step, a random \(\pmb{\xi}^\nu\) is chosen from the \(P\) training examples.
+\(\pmb{\xi}^\nu\)'s contribution to the cost function is given by:
+\[
+	e^\nu = 
+	\frac{1}{2}\left(
+		\sigma(\pmb{\xi}^\nu) - \tau(\pmb{\xi}^\nu
+	\right)^2
+\]
+
+The gradient descent update for the weight vectors \(\mathbf{w}_j\) with \(j \in \left\{1, 2\right\}\) is:
+\[
+	\mathbf{w}_j \leftarrow \mathbf{w}_j - \eta \nabla_{\mathbf{w}_j}e^\nu
+\]
+where \(\eta\) is the learning rate, and \(\nabla_{\mathbf{w}_j}\) denotes the gradient with respect to \(\mathbf{w}_j\).
+
+\(\nabla_{\mathbf{w}_j}e^\nu\), that is the gradient of the contribution of a single example to the cost function with respect to \(\mathbf{w}_j\), is given by:
+\begin{equation} \label{eq:costFunction}
+	\begin{split}
+		\nabla_{\mathbf{w}_j}e^\nu
+		&= \\
+		\frac{1}{2} \nabla_{\mathbf{w}_j} \left( 
+			\sigma(\pmb{\xi}^\nu) - \tau(\pmb{\xi}^\nu)
+		\right)^2
+		&= \\
+		(\sigma(\pmb{\xi}^\nu) - \tau(\pmb{\xi}^\nu))
+		\nabla_{\mathbf{w}_j}
+		\sigma(\pmb{\xi}^\nu)
+		&= \\
+		(\sigma(\pmb{\xi}^\nu) - \tau(\pmb{\xi}^\nu))
+		\nabla_{\mathbf{w}_j}
+		\tanh(\mathbf{w}_j\cdot\pmb{\xi}^\nu)
+		&= \\
+		(\sigma(\pmb{\xi}^\nu) - \tau(\pmb{\xi}^\nu))
+		(1 - \tanh^2(\mathbf{w}_j\cdot\pmb{\xi}^\nu))
+		\nabla_{\mathbf{w}_j}
+		\mathbf{w}_j\cdot\pmb{\xi}^\nu
+		&= \\
+		(\sigma(\pmb{\xi}^\nu) - \tau(\pmb{\xi}^\nu))
+		(1 - \tanh^2(\mathbf{w}_j\cdot\pmb{\xi}^\nu))
+		\pmb{\xi}^\nu 
+	\end{split}
+\end{equation}
+
+Performing the gradient descent update for \(t_{max} \cdot P\) random examples, stochastically results in a descent of the cost functions.
+
+\[\]

@@ -140,7 +140,10 @@
 %----------------------------------------------------------------------------------------
 
 \begin{abstract}
-
+   \noindent In this report, learning by stochastic gradient descent will be explained, implemented and applied to a given dataset.
+   The training cost function and test cost function will be shown as a function of learning time.
+   We will experiment with the size of the training set.
+   Also, the learning rate will be varied, and the consequences of this will be analyzed.
 \end{abstract}
 
 %----------------------------------------------------------------------------------------
@@ -172,22 +175,36 @@
 \label{sec:workload}
 \input{workload.tex}
 
-%----------------------------------------------------------------------------------------
-%	REFERENCE LIST
-%----------------------------------------------------------------------------------------
-\bibliographystyle{ieeetr}
-\bibliography{sources}
-
-%----------------------------------------------------------------------------------------
-
 \end{multicols}
 \clearpage
 \section*{Appendix}
 \begin{appendices}
    \appendix
-   \section{Code}
-   \label{app:code}
-   % \matlabexternal{../minover.m}
+   \section{Gradient descent training}
+   \label{app:training}
+   \begin{matlab}
+for t=1:t_max
+    for i=1:P
+        % Take a random example
+        nu = randi(P);
+        xi_nu = training_examples(:, nu);
+        tau_nu = training_taus(nu);
+        
+        % Perform a gradient descent step using the random example
+        [w_1, w_2] = gradient_descent_step(w_1, w_2, xi_nu, tau_nu, learning_rate);
+    end
+    
+    % Store the cost functions at this time step
+    training_cost = cost_function(training_examples, w_1, w_2, training_taus);
+    training_costs(t) = training_cost;
+    
+    test_cost = cost_function(test_examples, w_1, w_2, test_taus);
+    test_costs(t) = test_cost;
+end
+   \end{matlab}
+   \section{Gradient descent step}
+   \label{app:step}
+   \matlabexternal{../gradient_descent_step.m}
 \end{appendices}
 
 \end{document}

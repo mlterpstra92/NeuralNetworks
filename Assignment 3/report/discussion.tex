@@ -1,1 +1,33 @@
 %!TEX root = report.tex
+\subsection{Time variance}
+One of the dangers of virtually every learning algorithm is overfitting. 
+In this case, the trained model is too specific for the data and cannot correctly predict previously unforeseen observations because the generalization error increases as a result to a better fit to the training data. 
+When the model is overfitted, it is highly unbiased towards the given data because it views all data as `typical'.
+As a result, the variance beyond the dataset is very large; the small fluctuations in the dataset are given too much meaning, causing it to incorrectly label data outside the trainingset.
+
+One way to prevent overfitting is to perform the action of early stopping. 
+This is a form of regularization to prevent overfitting. 
+When early stopping is applied the number of iterations of algorithms as gradient descent is limited when it is detected that the machine is overfitting. 
+
+Unfortunately, there are no formal methods to determine when to stop, as there are only ad-hoc manners to prevent overfitting. 
+In our cases, we observe that overfitting can occur as soon as after 500 iterations (see Figure~\ref{fig:overfitting}). 
+Therefore, one way to perform early stopping for our dataset is to monitor the generalization error after 500 iterations.
+If it increases as opposed to the previous iteration, the algorithm could decide to stop further training as it is starting to overfit.
+
+\subsection{Example size variance}
+Except for time variance as described in the section above, another interesting research case is varying the number of training examples. 
+This has been shown in Figures~\ref{fig:costs_P100}-\ref{fig:costs_P500}.
+These figures show three different situations: There is too little training data, enough training data, and even more training data. 
+
+In the case of Figure~\ref{fig:costs_P100} one could argue that the training data is not representative for the entire dataset. 
+This causes that the odds of overfitting is higher than with more training data because outliers have a larger influence on the training than with a larger training set.
+
+In the case of Figure~\ref{fig:costs_P200} one could argue that in this case there is reasonably enough data to use the network.
+We state that in this case that there is a fair balance between the risk of overfitting, the significance to the verification of the network, and the execution time of the training.
+
+In the case of Figure~\ref{fig:costs_P500} we argue that the training dataset is even better.
+A too large training set implies a too small test set.
+In our case, the test set is still 90 \% of the entire dataset, so the test set is still a good representation of the dataset.
+The effect of a too small test set is that it bears too little statistical significance for the verification of the classification of the neural network.
+
+Another consequence of using a too large training set is that the execution time of the training is very large, so one has to be careful with choosing \(P\).
