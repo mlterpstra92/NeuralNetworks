@@ -34,21 +34,22 @@ Figures~\ref{fig:generalizationerror_50}-\ref{fig:generalizationerror_150} show 
 It can be seen in Figures~\ref{fig:generalizationerror_50}-\ref{fig:generalizationerror_150} that error converges relatively fast towards a certain value.
 
 Moreover, the Minover algorithm has also been run on noisy data.
-There was 5\% noise added to the data.
-This means that approximately 5\% of the labels $S^{\mu}_R$ had a flipped sign as opposed to what the teacher perceptron trained.
-This should prove the robustness of the algorithm.
+There was 10\% noise added to the data.
+This means that approximately 10\% of the labels $S^{\mu}_R$ had a flipped sign as opposed to what the teacher perceptron trained.
+This should show how robust the algorithm is with respect to noise.
 \myfigure{
 	\includegraphics[width=\columnwidth]{generalizationerror_noisy.eps}%
-	\figcaption{Generalization error for \(P=50\) with 5\% noise added.}
+	\figcaption{Generalization error for \(P=50\) with 10\% noise added.}
 	\label{fig:generalizationerror_noisy}
 }
-Figure~\ref{fig:generalizationerror_noisy} shows the generalization error of the perceptron training with noisy data.
-In comparison with figure~\ref{fig:generalizationerror_50} it is visible that the system still converges to some value, but the convergence value is higher than with non-noisy training data. 
+
+Figure~\ref{fig:generalizationerror_noisy} shows the generalization error of the perceptron training with 1\% noisy data.
+In comparison with Figure~\ref{fig:generalizationerror_50} it is visible that the system still converges to some value, but the convergence value is higher than with non-noisy training data. 
 
 \myfigure{
-	\includegraphics[width=\columnwidth]{learningcurve_noise.eps}%
-	\figcaption{Learning curve of a student perceptron where 5\% noise is added to the data}
+	\includegraphics[width=\columnwidth]{learningcurve_noise_001.eps}%
+	\figcaption{Learning curve of a student perceptron where 1\% noise is added to the data}
 	\label{fig:noisecurve}
 }
-Figure~\ref{fig:noisecurve} shows the learning curve as figure~\ref{fig:learningcurve} does, but 5\% noise is added.
-They are somewhat similar but the curve of figure~\ref{fig:noisecurve} is less smooth as well as having an overall higher generalized error value.
+Figure~\ref{fig:noisecurve} shows the learning curve as figure~\ref{fig:learningcurve} does, but 1\% noise is added.
+They are somewhat similar but the curve of Figure~\ref{fig:noisecurve} is less smooth as well as having an overall higher generalized error value.

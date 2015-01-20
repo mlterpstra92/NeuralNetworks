@@ -8,7 +8,7 @@ function [e_g] = minover_generalization_error( N, P, delta, n_max, teacherVector
     diff = sign(xi' * w_det) == S';
     numDiffs = length(find(diff == 0));
     if numDiffs > 0
-        warning('Did not converge properly! There are differences.');
+        warning(['Did not converge properly for alpha = ', num2str(P / N), '! There are differences. (Might be due to added noise)']);
     end
     
     % Return the generalization error of the final weight vector.
