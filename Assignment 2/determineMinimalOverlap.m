@@ -6,4 +6,3 @@ function [k_mu, mu] = determineMinimalOverlap(w, xi, S)
     end
     [k_mu, mu] = min(ks);
 end
-
