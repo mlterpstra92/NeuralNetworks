@@ -1,6 +1,6 @@
 close all;
 
-t_max = 15000;
+t_max = 1500;
 learning_rate = 0.01;
 P = 200; % The size of the training set
 
@@ -25,7 +25,8 @@ w_2 = generate_weight_vector(N);
 
 training_costs = zeros(1, t_max);
 test_costs = zeros(1, t_max);
-
+count = 0;
+tic;
 for t=1:t_max
     for i=1:P
         % Take a random example
@@ -45,7 +46,38 @@ for t=1:t_max
     test_costs(t) = test_cost;
     
     if mod((t/t_max)*100, 5) == 0
-        disp([num2str((t/t_max)*100), '%']);
+        elapsed = toc;
+        
+        remainingSeconds = (((100 - ((t/t_max)*100)) * elapsed) / 5.0);
+        remainingHours = floor(remainingSeconds / 3600);
+        t2 = remainingSeconds - (remainingHours * 3600);
+        remainingMinutes = floor(t2 / 60);
+        remainingSeconds = floor(t2 - (remainingMinutes * 60));
+        
+        timeStr = [];
+        if remainingHours > 0
+            if remainingHours == 1
+                timeStr = [timeStr '1 hour, '];
+            else
+                timeStr = [timeStr num2str(remainingHours) ' hours, '];
+            end
+        end
+        if remainingMinutes > 0
+            if remainingMinutes == 1
+                timeStr = [timeStr ' 1 minute and '];
+            else
+                timeStr = [timeStr num2str(remainingMinutes) ' minutes and '];
+            end
+        end
+        if remainingSeconds == 1
+            timeStr = [timeStr '1 second'];
+        else
+            timeStr = [timeStr num2str(remainingSeconds) ' seconds'];
+        end
+        
+        fprintf(1, repmat('\b',1,count));
+        count = fprintf('%d%% - Time remaining: %s\r', (t / t_max) * 100, timeStr);
+        tic;
     end
 end
 
@@ -67,3 +99,4 @@ figure;
 bar(w_2);
 xlim([0.5, 50.5]);
 title('Weight vector w_2');
+toc;
