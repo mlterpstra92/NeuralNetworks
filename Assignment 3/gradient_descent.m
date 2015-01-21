@@ -99,4 +99,3 @@ figure;
 bar(w_2);
 xlim([0.5, 50.5]);
 title('Weight vector w_2');
-toc;
