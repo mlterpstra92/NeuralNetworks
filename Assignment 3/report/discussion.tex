@@ -16,8 +16,8 @@ If it increases as opposed to the previous iteration, the algorithm could decide
 
 \subsection{Example size variance}
 Except for time variance as described in the section above, another interesting research case is varying the number of training examples. 
-This has been shown in Figures~\ref{fig:costs_P100}-\ref{fig:costs_P500}.
-These figures show three different situations: There is too little training data, enough training data, and even more training data. 
+This has been shown in Figures~\ref{fig:costs_P100}-\ref{fig:costs_P4000}.
+These figures show different situations: There is too little training data, enough training data, and even more training data. 
 
 In the case of Figure~\ref{fig:costs_P100} one could argue that the training data is not representative for the entire dataset. 
 This causes that the odds of overfitting is higher than with more training data because outliers have a larger influence on the training than with a larger training set.
@@ -29,5 +29,8 @@ In the case of Figure~\ref{fig:costs_P500} we argue that the training dataset is
 A too large training set implies a too small test set.
 In our case, the test set is still 90 \% of the entire dataset, so the test set is still a good representation of the dataset.
 The effect of a too small test set is that it bears too little statistical significance for the verification of the classification of the neural network.
+
+Figure~\ref{fig:costs_P4000} shows a nice convergence of the training error and test error.
+We see that the errors converge almost immediately, compared to the other training sets.
 
 Another consequence of using a too large training set is that the execution time of the training is very large, so one has to be careful with choosing \(P\).

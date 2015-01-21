@@ -30,8 +30,23 @@ From the reasonable training in Figure~\ref{fig:costs_t400_lr001}, we've retriev
 	\label{fig:w2_t400_lr001}
 }
 
+We've also retrieved the weight vectors for a the training with a larger training set, \(P = 4000\).
+These weight vectors are shown in Figures~\ref{fig:w1_P4000} and~\ref{fig:w2_P4000}.
+
+\myfigure{
+	\includegraphics[width=\columnwidth]{w1_P4000.eps}
+	\figcaption{Visualization of \(w_1\) for \(P=4000\).}
+	\label{fig:w1_P4000}
+}
+
+\myfigure{
+	\includegraphics[width=\columnwidth]{w2_P4000.eps}
+	\figcaption{Visualization of \(w_2\) for \(P=4000\).}
+	\label{fig:w2_P4000}
+}
+
 We've also varied the size of the training set \(P\).
-The values for \( P \in \left\{100, 200, 500\right\}\) are shown in Figures~\ref{fig:costs_P100}-\ref{fig:costs_P500}.
+The values for \( P \in \left\{100, 200, 500, 4000\right\}\) are shown in Figures~\ref{fig:costs_P100}-\ref{fig:costs_P4000}.
 
 \myfigure{
 	\includegraphics[width=\columnwidth]{costs_P100.eps}
@@ -49,4 +64,10 @@ The values for \( P \in \left\{100, 200, 500\right\}\) are shown in Figures~\ref
 	\includegraphics[width=\columnwidth]{costs_P500.eps}
 	\figcaption{\(500\) training patterns.}
 	\label{fig:costs_P500}
+}
+
+\myfigure{
+	\includegraphics[width=\columnwidth]{costs_P4000.eps}
+	\figcaption{\(4000\) training patterns.}
+	\label{fig:costs_P4000}
 }
